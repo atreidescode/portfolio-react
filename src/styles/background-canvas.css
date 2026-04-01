@@ -1,0 +1,29 @@
+/* Image de fond fixe + canvas animation pluie */
+
+.background-image {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* En React/Vite, l'image est dans /public/assets/images/hand.jpg */
+    background: url('/portfolio-react/assets/images/hand.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: 0;
+}
+
+.background-image.visible {
+    opacity: 0.4;
+}
+
+canvas {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .background-image { background-size: contain; }
+}

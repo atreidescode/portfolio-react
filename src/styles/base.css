@@ -1,0 +1,11 @@
+/* Règles fondamentales : marges, font, couleur de fond global */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body, html {
+    margin: 0; padding: 0; width: 100%;
+    background-color: #050505;
+    font-family: 'Space Mono', 'Courier New', monospace;
+    scroll-behavior: smooth;
+}
+body { height: auto; overflow-x: hidden; overflow-y: auto; }

@@ -1,0 +1,47 @@
+/* Section Stack : grille de tags technos */
+
+.stack-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.tech-tag {
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: slideInTags 0.5s ease-out both;
+}
+
+.tech-tag:hover {
+    background: rgba(0, 0, 0, 0.88);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.tech-tag:nth-child(1) { animation-delay: 0.1s; }
+.tech-tag:nth-child(2) { animation-delay: 0.2s; }
+.tech-tag:nth-child(3) { animation-delay: 0.3s; }
+.tech-tag:nth-child(4) { animation-delay: 0.4s; }
+.tech-tag:nth-child(5) { animation-delay: 0.5s; }
+.tech-tag:nth-child(6) { animation-delay: 0.6s; }
+.tech-tag:nth-child(7) { animation-delay: 0.7s; }
+.tech-tag:nth-child(8) { animation-delay: 0.8s; }
+
+.stack-description {
+    margin-top: 40px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    text-align: center;
+}

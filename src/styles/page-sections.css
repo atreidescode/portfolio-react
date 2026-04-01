@@ -1,0 +1,36 @@
+/* Structure commune à toutes les sections */
+
+.section {
+    min-height: auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: clamp(2rem, 8vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 60px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+}
+
+@media (max-width: 768px) {
+    .section { padding: 60px 20px; }
+    .section-title { margin-bottom: 40px; }
+}
