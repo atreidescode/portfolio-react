@@ -1,41 +1,35 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Observe l'entrée d'un élément dans le viewport.
- * Déclenche onVisible(sectionId) quand l'élément devient visible.
- * Gère aussi l'animation fade-in via les classes CSS.
- *
- * @param {Function} onVisible - callback appelé avec l'id de la section
- * @param {Object}   options   - options IntersectionObserver
+ * Observe quand la section entre dans le viewport.
+ * Déclenche onVisible(sectionKey) une seule fois + anime la section.
+ * Accepte un sectionKey optionnel pour identifier la section.
  */
-export function useSectionObserver(onVisible, options = {}) {
-  const ref = useRef(null);
+export function useSectionObserver(onVisible, sectionKey) {
+  const ref     = useRef(null);
+  const hasFired = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    const opts = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-      ...options,
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      // Anime l'apparition
-      el.style.opacity   = '1';
-      el.style.transform = 'translateY(0)';
-      // Notifie le parent pour le terminal
-      if (el.id && onVisible) onVisible(el.id);
-      // On désactive l'observation après le premier déclenchement
-      observer.unobserve(el);
-    }, opts);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasFired.current) {
+          hasFired.current = true;
+          // Anime la section
+          el.style.opacity   = '1';
+          el.style.transform = 'translateY(0)';
+          // Déclenche le terminal avec la clé de section
+          if (onVisible && sectionKey) onVisible(sectionKey);
+        }
+      },
+      { threshold: 0.2 }
+    );
 
     observer.observe(el);
-
     return () => observer.disconnect();
-  }, [onVisible, options]);
+  }, [onVisible, sectionKey]);
 
   return ref;
 }

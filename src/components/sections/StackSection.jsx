@@ -2,7 +2,7 @@ import STACK from '../../data/stack';
 import { useSectionObserver } from '../../hooks/useSectionObserver';
 
 export default function StackSection({ onVisible }) {
-  const ref = useSectionObserver(onVisible);
+  const ref = useSectionObserver(onVisible, 'stack');
 
   return (
     <section

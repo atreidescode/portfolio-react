@@ -8,7 +8,7 @@ const INTERESTS = [
 ];
 
 export default function InterestsSection({ onVisible }) {
-  const ref = useSectionObserver(onVisible);
+  const ref = useSectionObserver(onVisible, 'interests');
 
   return (
     <section

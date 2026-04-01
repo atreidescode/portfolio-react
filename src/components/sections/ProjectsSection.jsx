@@ -4,10 +4,9 @@ import { useSlider } from '../../hooks/useSlider';
 import { useSectionObserver } from '../../hooks/useSectionObserver';
 
 export default function ProjectsSection({ onVisible }) {
-  const sectionRef             = useSectionObserver(onVisible);
+  const sectionRef = useSectionObserver(onVisible, 'projects');
   const { current, goTo, prev, next } = useSlider(PROJECTS.length);
 
-  // Swipe tactile et souris
   const startX     = useRef(0);
   const isDragging = useRef(false);
 
@@ -18,8 +17,8 @@ export default function ProjectsSection({ onVisible }) {
     if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
     isDragging.current = false;
   };
-  const handleMouseDown  = (e) => { startX.current = e.clientX; isDragging.current = true; };
-  const handleMouseUp    = (e) => {
+  const handleMouseDown = (e) => { startX.current = e.clientX; isDragging.current = true; };
+  const handleMouseUp   = (e) => {
     if (!isDragging.current) return;
     const diff = startX.current - e.clientX;
     if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
@@ -34,10 +33,8 @@ export default function ProjectsSection({ onVisible }) {
       style={{ opacity: 0, transform: 'translateY(20px)', transition: 'all 0.8s ease-in-out' }}
     >
       <h2 className="section-title">Projets</h2>
-
       <div className="slider-outer">
         <button className="slider-btn prev" onClick={prev} aria-label="Projet précédent">&#8249;</button>
-
         <div className="slider-wrapper">
           <div
             className="projects-slider"
@@ -66,10 +63,8 @@ export default function ProjectsSection({ onVisible }) {
             ))}
           </div>
         </div>
-
         <button className="slider-btn next" onClick={next} aria-label="Projet suivant">&#8250;</button>
       </div>
-
       <div className="slider-dots">
         {PROJECTS.map((_, i) => (
           <button

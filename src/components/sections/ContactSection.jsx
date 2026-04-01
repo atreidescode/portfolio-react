@@ -1,7 +1,7 @@
 import { useSectionObserver } from '../../hooks/useSectionObserver';
 
 export default function ContactSection({ onVisible }) {
-  const ref = useSectionObserver(onVisible);
+  const ref = useSectionObserver(onVisible, 'contact');
 
   return (
     <section

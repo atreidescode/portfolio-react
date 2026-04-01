@@ -1,23 +1,27 @@
 import { useEffect, useRef } from 'react';
 
-/**
- * Section Hero : titre animé (lettres en spans) + sous-titre.
- * Reproduit hero-title-effect.js en React pur.
- * useEffect découpe le texte en <span> une seule fois au montage.
- */
 export default function HeroSection() {
   const titleRef = useRef(null);
 
   useEffect(() => {
-    const el   = titleRef.current;
+    // Découpe le titre en spans pour l'animation canvas
+    const el = titleRef.current;
     if (!el) return;
     const text = el.textContent;
     el.innerHTML = '';
     text.split('').forEach((letter) => {
-      const span       = document.createElement('span');
-      span.innerHTML   = letter === ' ' ? '&nbsp;' : letter;
+      const span     = document.createElement('span');
+      span.innerHTML = letter === ' ' ? '&nbsp;' : letter;
       el.appendChild(span);
     });
+
+    // Active le background après un léger délai
+    const timer = setTimeout(() => {
+      const bg = document.getElementById('bg-img');
+      if (bg) bg.classList.add('visible');
+    }, 300);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
