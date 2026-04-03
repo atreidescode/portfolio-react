@@ -48,19 +48,31 @@ export default function ProjectsSection({ onVisible }) {
             onMouseLeave={() => { isDragging.current = false; }}
           >
             {PROJECTS.map((project) => (
-              <div key={project.id} className="project-card">
-                <div className="project-number">{project.number}</div>
-                <div className="project-tech">{project.tech}</div>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <a
-                  href={project.link}
-                  target={project.link !== '#' ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  {project.linkLabel}
-                </a>
+              <div key={project.id} className={`project-card${project.image ? ' project-card--with-image' : ''}`}>
+                <div className="project-card-content">
+                  <div className="project-number">{project.number}</div>
+                  <div className="project-tech">{project.tech}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <a
+                    href={project.link}
+                    target={project.link !== '#' ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className="project-link"
+                  >
+                    {project.linkLabel}
+                  </a>
+                </div>
+
+                {project.image && (
+                  <div className="project-card-image">
+                    <img
+                      src={project.image}
+                      alt={`Preview ${project.title}`}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>

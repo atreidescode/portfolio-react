@@ -8,6 +8,7 @@ const PROJECTS = [
       "SPA immersive conçue pour le Musée de l'Illusion de Paris. Design Gold & Dark, animations de particules, slider custom et gestion multilingue FR/EN.",
     link: 'https://github.com/atreidescode/musee-illusion',
     linkLabel: 'Voir sur GitHub →',
+    image: '/projet-musee-illusion-2.jpg',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const PROJECTS = [
       "Backtest d'une stratégie Mean Reversion sur SPX/USD (H1). Filtre ADF, signal Z-Score, simulation CFD et Grid Search pour optimiser les paramètres.",
     link: 'https://github.com/atreidescode/Z-score-strategy-backtest',
     linkLabel: 'Voir sur GitHub →',
+    image: '/projet-backtest-z-score-mean-reversion-3.jpg',
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const PROJECTS = [
       "Automatisation de la recherche d'alternance sur Welcome to the Jungle — extraction et filtrage automatique des offres pertinentes.",
     link: '#',
     linkLabel: 'Bientôt disponible →',
+    image: null,
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const PROJECTS = [
       'Ce portfolio — architecture modulaire en CSS, animations canvas, terminal interactif et effets visuels custom.',
     link: 'https://github.com/atreidescode/portofolio',
     linkLabel: 'Voir sur GitHub →',
+    image: '/projet-portfolio.jpg',
   },
 ];
 

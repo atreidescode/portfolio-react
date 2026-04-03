@@ -29,6 +29,45 @@
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Layout 2 colonnes quand une image est présente */
+.project-card--with-image {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 28px;
+}
+
+.project-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.project-card-image {
+    flex-shrink: 0;
+    width: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    align-self: center;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.project-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.project-card--with-image:hover .project-card-image img {
+    opacity: 1;
 }
 
 .project-card::before {
@@ -57,6 +96,8 @@
     border-radius: 4px;
     font-size: 0.85rem;
     transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 .project-link:hover {
@@ -64,7 +105,7 @@
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Flèches — en dehors du overflow:hidden */
+/* Flèches */
 .slider-btn {
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.12);
@@ -118,4 +159,6 @@
     .slider-outer { gap: 10px; }
     .slider-btn   { width: 38px; height: 38px; font-size: 1.4rem; }
     .project-card { padding: 25px; }
+    .project-card--with-image { flex-direction: column; }
+    .project-card-image { width: 100%; height: 160px; align-self: stretch; }
 }
