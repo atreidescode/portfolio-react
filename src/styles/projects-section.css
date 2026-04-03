@@ -10,7 +10,7 @@
 
 .slider-wrapper {
     flex: 1;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 12px;
 }
 
@@ -27,7 +27,7 @@
     border-radius: 12px;
     padding: 40px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@
     flex-direction: row;
     align-items: stretch;
     gap: 28px;
+    padding-right: 280px;
 }
 
 .project-card-content {
@@ -49,12 +50,16 @@
 }
 
 .project-card-image {
-    flex-shrink: 0;
-    width: 240px;
-    border-radius: 8px;
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    width: 280px;
+    height: calc(100% + 48px);
+    border-radius: 10px;
     overflow: hidden;
-    align-self: center;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
 .project-card-image img {
@@ -77,6 +82,8 @@
     width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
     transition: left 0.5s ease;
+    border-radius: 12px;
+    z-index: 1;
 }
 
 .project-card:hover::before { left: 100%; }
@@ -159,6 +166,16 @@
     .slider-outer { gap: 10px; }
     .slider-btn   { width: 38px; height: 38px; font-size: 1.4rem; }
     .project-card { padding: 25px; }
-    .project-card--with-image { flex-direction: column; }
-    .project-card-image { width: 100%; height: 160px; align-self: stretch; }
+    .project-card--with-image {
+        flex-direction: column;
+        padding-right: 25px;
+        padding-top: 200px;
+    }
+    .project-card-image {
+        top: -24px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+    }
 }
